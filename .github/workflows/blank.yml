@@ -24,8 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-        with:
-            token: ${{ secrets.PAT }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -45,3 +45,5 @@ jobs:
           git add report.txt
           git commit -am "Automated report"
           git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
